@@ -7,9 +7,9 @@ RUN go mod download
 
 COPY . .
 
-RUN CGO_ENABLED=0 go build -o build/fizzbuzz
+RUN go build -o build/fizzbuzz
 
-FROM scratch
+FROM gcr.io/distroless/base
 
 COPY --from=builder /app/build/fizzbuzz /
 
